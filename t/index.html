@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./main.js"></script>
+
+    <div id="info">
+        <div id="graphic">
+            <canvas id="canvas"></canvas>
+            <div id="graphic_data">
+
+                <div class="graph_i">
+                    <div class="graph_n">Epoch</div>
+                    <div id="epoch_n">0</div>
+                </div>
+
+                <div class="graph_i">
+                    <div class="graph_n">Error</div>
+                    <div id="error_n">0</div>
+                </div>
+
+                <div id="result_list">
+                    
+                </div>
+            </div>
+        </div>
+        <div id="info_data">
+
+            <div id="data"></div>
+
+            <div id="train_c">
+                <div id="epochs">
+                    <div>Epochs count</div>
+                    <input type="text" id="epoch" value="500">
+                </div>
+
+                <button id="train_b">Train</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="check">
+        <div class="check_con">
+            Weight
+            <input type="text" id="weight" value="50">
+        </div>
+        <div class="check_con">
+            Height
+            <input type="text" id="height" value="155">
+        </div>
+        <button id="guess">Guess</button>
+
+        <div id="guess_r"></div>
+    </div>
+</body>
+</html>
