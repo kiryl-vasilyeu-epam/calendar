@@ -8,6 +8,7 @@
 html,
 body {
   position: relative;
+  overflow: hidden;
   width: 100%;
 
   display: flex;
@@ -41,7 +42,8 @@ body {
   align-items: center;
   text-align: center;
   
-  background-color: rgb(249, 74, 74);
+  /* background-color: rgb(249, 74, 74); */
+  background-color: blue;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
 }
