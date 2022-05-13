@@ -44,6 +44,10 @@ body {
   background-color: rgb(249, 74, 74);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
+}
+
+.day {
+  margin-top: 95px;
   font-size: 40px;
   color: white;
 }
@@ -88,9 +92,17 @@ body {
 
   justify-content: center;
   align-items: center;
+  margin-top: 75px;
 
   font-size: 80px;
   font-weight: 600;
+}
+
+.textContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .animated {
@@ -99,7 +111,9 @@ body {
 
 .progress {
   display: flex;
+  flex: 1;
   flex-direction: row;
+  align-items: flex-end;
   padding: 0px 60px 10px 60px;
 }
 .progressDay {
@@ -124,11 +138,11 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 43px;
+  z-index: 100;
 }
 
 .date {
   font-size: 30px;
-  margin: 0px 20px;
 }
 
 .button {
@@ -138,7 +152,6 @@ body {
 
   padding: 10px;
 
-  /* border: 3px solid black; */
   border-radius: 30px;
   display: flex;
   cursor: pointer;

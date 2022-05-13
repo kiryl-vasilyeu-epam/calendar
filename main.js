@@ -125,27 +125,15 @@ const showAnimationElement = async (element, isPlusDay) => {
 }
 
 const hideAnimation = async (isPlusDay) => {
-    const dayElement = document.getElementsByClassName('day')[0];
-    hideAnimationElement(dayElement, isPlusDay);
-
-    const nameElement = document.getElementsByClassName('name')[0];
-    hideAnimationElement(nameElement, isPlusDay);
-
-    const dateElement = document.getElementsByClassName('date')[0];
-    hideAnimationElement(dateElement, isPlusDay);
+    const textElement = document.getElementsByClassName('textContainer')[0];
+    hideAnimationElement(textElement, isPlusDay);
 
     await waiterInMs(350);
 }
 
 const showAnimation = async (isPlusDay) => {
-    const dayElement = document.getElementsByClassName('day')[0];
-    await showAnimationElement(dayElement, isPlusDay);
-
-    const nameElement = document.getElementsByClassName('name')[0];
-    await showAnimationElement(nameElement, isPlusDay);
-
-    const dateElement = document.getElementsByClassName('date')[0];
-    await showAnimationElement(dateElement, isPlusDay);
+    const textElement = document.getElementsByClassName('textContainer')[0];
+    await showAnimationElement(textElement, isPlusDay);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
