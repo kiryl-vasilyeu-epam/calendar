@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  user-select: none;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgb(241, 241, 241);
+}
+
+.calendar {
+  width: 300px;
+  height: 340px;
+
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 16px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+  background-color: white;
+}
+
+.calendarTop {
+  position: relative;
+  display: flex;
+  height: 90px;
+  padding-top: 20px;
+  
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+  background-color: rgb(249, 74, 74);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  font-size: 40px;
+  color: white;
+}
+
+.calendarHoles {
+  position: absolute;
+  top: 5px;
+  display: flex;
+}
+
+.circle {
+  content: '';
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  height: 27px;
+  width: 27px;
+
+  margin: 0px 20px;
+
+  background-color: rgb(241, 241, 241);
+  border-radius: 16px;
+}
+
+.metalPart {
+  content: '';
+
+  width: 16px;
+  height: 40px;
+
+  margin-bottom: 5px;
+
+  background-color: rgb(80, 80, 113);
+  border-radius: 16px;
+}
+
+.name {
+  display: flex;
+  flex: 1;
+
+  justify-content: center;
+  align-items: center;
+
+  font-size: 80px;
+  font-weight: 600;
+}
+
+.progress {
+  display: flex;
+  flex-direction: row;
+  padding: 0px 60px 10px 60px;
+}
+.progressDay {
+  content: '';
+
+  height: 10px;
+  display: flex;
+  flex: 1;
+
+  margin: 5px;
+
+  background-color: rgb(10, 238, 154);
+  border-radius: 16px;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+}
+
+.dateContainer {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 43px;
+}
+
+.date {
+  font-size: 30px;
+  margin: 0px 20px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px;
+
+  /* border: 3px solid black; */
+  border-radius: 30px;
+  display: flex;
+  cursor: pointer;
+}
+
+.arrow {
+  border: solid black;
+  border-width: 0 4px 4px 0;
+  padding: 8px;
+}
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
