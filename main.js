@@ -13,8 +13,7 @@ const days = [
     { name: 'Вася', both: true, color: 'rgb(254, 89, 89)' },
     { name: 'Валя', both: false, color: 'rgb(89, 138, 254)' },
     { name: 'Валя', both: true, color: 'rgb(89, 138, 254)' },
-    // { name: 'Тоша', both: false, color: 'rgb(10, 238, 154)' },
-    { name: 'Тоша', both: false, color: 'black' },
+    { name: 'Тоша', both: false, color: 'rgb(10, 238, 154)' },
     { name: 'Тоша', both: true, color: 'rgb(10, 238, 154)' },
 ];
 const months = [
@@ -33,6 +32,7 @@ const months = [
 ];
 
 let currentData = Date.now();
+let canSwipe = true;
 
 const getCurrentData = () => {
     const now = new Date(currentData);
@@ -50,7 +50,14 @@ const getCurrentData = () => {
     }
 }
 
-const displayCurrentData = () => {
+const waiterInMs = async (ms) => {
+    await new Promise(res => setTimeout(res, ms))
+}
+
+const displayCurrentData = async (isPlusDay) => {
+    if(!canSwipe) return;
+    canSwipe = false;
+    await hideAnimation(isPlusDay);
     const {
         day,
         date,
@@ -75,6 +82,8 @@ const displayCurrentData = () => {
     } else {
         progressDay1.style.backgroundColor = 'white';  
     }
+    await showAnimation(isPlusDay);
+    canSwipe = true;
 }
 
 const updateCurrentData = (isPlusDay) => {
@@ -87,12 +96,56 @@ const updateCurrentData = (isPlusDay) => {
 
 const setPrevDate = () => {
     updateCurrentData(false);
-    displayCurrentData();
+    displayCurrentData(false);
 }
 
 const setNextDate = () => {
     updateCurrentData(true);
-    displayCurrentData();
+    displayCurrentData(true);
+}
+
+const hideAnimationElement = (element, isPlusDay) => {
+    element.classList.add('animated');
+    element.classList.add('zeroOpacity');
+    element.classList.add(isPlusDay ? 'rightAnimation' : 'leftAnimation');
+}
+
+const showAnimationElement = async (element, isPlusDay) => {
+    element.classList.remove('animated');
+
+    element.classList.remove(isPlusDay ? 'rightAnimation' : 'leftAnimation');
+    element.classList.add(isPlusDay ? 'leftAnimation' : 'rightAnimation');
+
+    await waiterInMs(20);
+    
+    element.classList.add('animated');
+    element.classList.remove(isPlusDay ? 'leftAnimation' : 'rightAnimation');
+    element.classList.remove('zeroOpacity');
+
+}
+
+const hideAnimation = async (isPlusDay) => {
+    const dayElement = document.getElementsByClassName('day')[0];
+    hideAnimationElement(dayElement, isPlusDay);
+
+    const nameElement = document.getElementsByClassName('name')[0];
+    hideAnimationElement(nameElement, isPlusDay);
+
+    const dateElement = document.getElementsByClassName('date')[0];
+    hideAnimationElement(dateElement, isPlusDay);
+
+    await waiterInMs(350);
+}
+
+const showAnimation = async (isPlusDay) => {
+    const dayElement = document.getElementsByClassName('day')[0];
+    await showAnimationElement(dayElement, isPlusDay);
+
+    const nameElement = document.getElementsByClassName('name')[0];
+    await showAnimationElement(nameElement, isPlusDay);
+
+    const dateElement = document.getElementsByClassName('date')[0];
+    await showAnimationElement(dateElement, isPlusDay);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -110,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     document.addEventListener('touchend', e => {
         const touchEnd = e.changedTouches[0].screenX;
-        if (Math.abs(touchstartX - touchEnd) < 20) return;
+        if (Math.abs(touchstartX - touchEnd) < 40) return;
         
         if (touchstartX > touchEnd) {
             setNextDate();
