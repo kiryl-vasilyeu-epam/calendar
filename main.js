@@ -13,7 +13,8 @@ const days = [
     { name: 'Вася', both: true, color: 'rgb(254, 89, 89)' },
     { name: 'Валя', both: false, color: 'rgb(89, 138, 254)' },
     { name: 'Валя', both: true, color: 'rgb(89, 138, 254)' },
-    { name: 'Тоша', both: false, color: 'rgb(10, 238, 154)' },
+    // { name: 'Тоша', both: false, color: 'rgb(10, 238, 154)' },
+    { name: 'Тоша', both: false, color: 'black' },
     { name: 'Тоша', both: true, color: 'rgb(10, 238, 154)' },
 ];
 const months = [
