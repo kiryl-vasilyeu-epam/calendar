@@ -84,18 +84,37 @@ const updateCurrentData = (isPlusDay) => {
     }
 }
 
+const setPrevDate = () => {
+    updateCurrentData(false);
+    displayCurrentData();
+}
+
+const setNextDate = () => {
+    updateCurrentData(true);
+    displayCurrentData();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     displayCurrentData();
 
     const leftButton = document.getElementsByClassName('button')[0];
-    leftButton.addEventListener('click', () => {
-        updateCurrentData(false);
-        displayCurrentData();
-    });
+    leftButton.addEventListener('click', setPrevDate);
 
     const rightButton = document.getElementsByClassName('button')[1];
-    rightButton.addEventListener('click', () => {
-        updateCurrentData(true);
-        displayCurrentData();
-    });
+    rightButton.addEventListener('click', setNextDate);
+
+    let touchstartX = 0;
+    document.addEventListener('touchstart', e => {
+        touchstartX = e.changedTouches[0].screenX
+    })
+    document.addEventListener('touchend', e => {
+        const touchEnd = e.changedTouches[0].screenX;
+        if (Math.abs(touchstartX - touchEnd) < 20) return;
+        
+        if (touchstartX > touchEnd) {
+            setNextDate();
+        } else {
+            setPrevDate();
+        }
+    })
 });
